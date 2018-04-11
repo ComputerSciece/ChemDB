@@ -16,7 +16,7 @@ import {DatabaseComponent} from './database/database.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Chems n\' Stuff';
+  title = 'ChemMoA';
 
   searchTerm: string=  "";
   chemicalName: string=  "";
@@ -31,28 +31,28 @@ export class AppComponent {
   combinedAssayTarget: any;
 
   res: any;
-
+objChem;
   assay: any;
   citation: any;
   target: any;
-
+Chemvalues:any;
   citationID: any;
   targetID: any;
 
   shouldRun: true;
+element: string;
 
 
-  
-  
- 
+
+
 
 
  constructor(private http: HttpClient) {
-    
-} 
+
+}
 
 ngOnInit() {
- 
+
     //this.getAssay();
     //this.getCitation();
     //this.getTarget();
@@ -67,30 +67,69 @@ ngOnInit() {
   });
 
   $(document).ready(function(){
-	
+
     $('ul.switcher li').click(function(){
       var tab_id = $(this).attr('data-tab');
-  
+
       $('li').removeClass('active');
       $('div.tab-pane').removeClass('active');
-  
+
       $(this).addClass('active');
       $("#"+tab_id).addClass('active');
     })
-  
+
   })
 
- 
- 
-    
+
+
+
 }
-     getAssay(): void {
-    this.http.get('http://localhost:3000/api/assay').subscribe(data => {
-    this.assay = data;
+     getAssay(): void{
+     let i = 0;
+    this.http.get('http://localhost:3000/api/chemicals/?_fields=Substance_Name&size=50').subscribe(data => {
+    this.objChem = data;
     console.log("Assay_Output");
     console.log(this.assay);
-    });
+  let idChemAll = document.getElementById("kendall");
+  // (i = 0; i < this.objChem.length; i++){
+//  this.Chemvalues[i]= Object.values(this.objChem[i]);}
+  //this.Chemvalues =JSON.stringify(this.Chemvalues);
+  //this.Chemvalues =  JSON.parse(this.Chemvalues.Substance_Name);
+//  let name = JSON.parse(Chemvalues.Substance_Name);
+  idChemAll.innerHTML =  this.objChem;
+//document.write(Object.values(this.chem[2]));
+
+}}
+
+
+/*  getAllChemical(): void{
+    let i =0;
+    this.http.get('http://localhost:3000/api/chemicals/?_fields=Substance_Name,Substance_CASRN').subscribe(data => {
+      this.chem = data;
+
+      ( i = 0; i < this.ChemName.length; i++){
+          let allChem = document.getElementById("displayAllChemical");
+        allChem.innerHTML = Object.values(this.chem[i]);
+      }
+    });*/
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 
   getTarget(): void {
     this.http.get('http://localhost:3000/api/target').subscribe(data => {
@@ -131,18 +170,17 @@ ngOnInit() {
     //console.log(this.target[1]);
     //this.assay[2] = this.assay[1] + this.target[1];
     //Object.keys(this.assay[1]).forEach(function(key) { this.target[1][key] = this.assay[1][key]; });
-    
+
     //console.log(Object.assign({}, this.assay[1],this.target[1]));
     for (let i=0; i<this.targetID.length; i++) {
       console.log(Object.assign({}, this.assay[this.targetID[i].aeid - 1],this.target[this.targetID[i].target_id - 1]));
-    
-    
+
+
     }
     console.log(this.combinedAssayTarget);
 
   }
-  
-  
-   
-}
 
+
+
+}*/

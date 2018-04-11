@@ -1,36 +1,25 @@
 
-<div class="Main"> 
+<div class="Main">
 
   <mat-toolbar class="TopNav">
-    
+
     <mat-toolbar-row>
-        <span  class="name">Ken<sup>2</sup>Mastry </span>
+        <span class="name">ChemMoA</span>
         <span class="example-spacer"></span>
 
-      
+      <form class="search-box" >
+           <input   class="search-box-input" type="text" required="required">
+           <button type="reset" class="delete"></button>
+         </form>
 
          <div class="User" (click)="loginShow = !loginShow">
-
           <a  class="btn btn-info btn-lg">
             <span class="glyphicon glyphicon-user"></span> User
           </a>
-
-
          </div>
-      
-       <form   class="search-box" >
-          <input   class="search-box-input" type="text" required="required">
-          <button type="reset" class="delete"></button>
-         
-           </form>
-
-          
-
-           
-
       </mat-toolbar-row>
     </mat-toolbar>
-  
+
 <mat-sidenav-container class="SideNav">
 
   <mat-sidenav class = "SideNav" mode="side" opened>
@@ -42,8 +31,8 @@
     <input type="checkbox" id="c1" name="cc" (click)="chemicalShow = !chemicalShow"/>
     <label for="c1"><span></span>Chemical</label>
     <br>
-    
-      
+
+
     <input type="checkbox" id="c2" name="cc" />
     <label for="c2"><span></span>Assay</label>
     <br>
@@ -57,7 +46,7 @@
         <div class="form-group checkbox">
           <div class="col-sm-1">
           </div>
-          <button (click)="getAssay();" type="button" class="btn btn-default"><span class="fa fa-square-o"></span> Assay</button>
+          <button (click)="getAssay();" type="button" class="btn btn-default"><span class="fa fa-square-o"></span> Show All Chemicals</button>
         </div>
         <div class="form-group checkbox">
           <div class="col-sm-1">
@@ -81,7 +70,7 @@
             </div>
       </form>
 
-     
+
 
 
       </div>
@@ -99,7 +88,7 @@
   <div class="row content">
 
 
-      
+
     <br>
 
 
@@ -111,102 +100,41 @@
 
     <div class="col-sm-5">
         <div class="well longtext">
-        <h1 class="marolbl">{{chemicalName}}</h1>
+        <h1 class="marolbl">Chemical List</h1>
         </div>
     </div>
 
-    
+
 
     </div>
     </div>
-    
+
   </div>
 
-      
+
        <div class="row">
 
-     
+
 
         <div class="col-sm-2">
           <div  class="well longtext">
-              <h4 class="title">CID</h4>
-              <p class="dark">{{CID}}</p>
+              <h4 class="title">Name</h4>
+              <p class="dark" id ="kendall">error</p>
           </div>
         </div>
 
-        <div class="col-sm-4">
-          <div class="well longtext">
-              <h4 class="title">Molecular Formula</h4>
-              <p class="dark">{{molecularFormula}}</p>
-          </div>
-        </div>
-
-        <div class="col-sm-3">
-          <div class="well longtext">
-              <h4 class="title">Molecular Weight</h4>
-              <p class="dark">{{molecularWeight}}</p>
-          </div>
-        </div>
-        
-        <div class="col-sm-3">
-          <div class="well longtext">
-              <h4 class="title">CASN</h4>
-              <p class="dark">{{CASN}}</p>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="row">
-        
-        <div class="col-sm-7">
-          <div class="well longtext">
-              <h4 class="title"> IUPACName </h4>
-              <p class="dark">{{IUPACName}}</p>
-           
-          </div>
-        </div>
-
-        <div class="col-sm-3">
-          <div class="well longtext">
-              <h4 class="title"> Synonym(s) </h4>
-          <p class="dark">{{synonyms}}</p>
-          </div>
-        </div>
-
-        
-        <div class="col-sm-2" (click)="combineAssay();">
-            <div class="well longtext">
-                <h4 class="title"> More Info </h4>
-                <p><a  class="dark" href="experiments"> Experiments</a></p>
-                <p><a  class="dark" href="target">Target (MOA)</a></p>
-                <p><a  class="dark" href="Toxicity">Toxicity</a></p>
-            </div>
-          </div>
-     
-         </div>
-
-         <div class="row">
-
-        <div class="col-sm-8">
-          <div class="well longtext">
-              <h4 class="title">Smiles</h4>
-              <p class="dark">{{SMILES}}</p>
-          
-          </div>
-        </div>
-
-        </div>
-
-     
-
-        
-      
-        
-  
+              </div>
 
 
-          
+
+
+
+
+
+
+
+
+
 
 
 </div>
@@ -215,11 +143,11 @@
     <div class="container">
       <div class="login-container-wrapper clearfix">
         <ul class="switcher clearfix">
-          <li class="first logo active" data-tab="login">					
-              <a>Login</a>			
+          <li class="first logo active" data-tab="login">
+              <a>Login</a>
           </li>
           <li class="second logo" data-tab="sign_up">
-              <a>Sign Up</a>	
+              <a>Sign Up</a>
           </li>
         </ul>
         <div class="tab-content">
